@@ -1,6 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    const navigation = `
+const navigation = `
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Fina Blommor</a>
@@ -42,4 +40,3 @@ const stickyfoot = `
 
 document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
 document.getElementById("stickyfoot").insertAdjacentHTML('afterbegin', stickyfoot);
-})
