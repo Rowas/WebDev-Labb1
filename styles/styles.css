@@ -1,11 +1,13 @@
 .center {
-    margin:auto;
-    width: 30%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 h1 {
-    margin:auto;
-    width: 30%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .background {
