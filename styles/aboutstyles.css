@@ -7,3 +7,12 @@
     position:absolute;
     bottom:0;
 }
+.threexgrid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.middlethreexgrid{
+    grid-row: 1;
+    grid-column: 2;
+}
