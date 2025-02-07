@@ -1,0 +1,9 @@
+.flexContainer{
+    display:flex;
+    flex-direction: column;
+}
+.maploc{
+    align-self: center;
+    position:absolute;
+    bottom:0;
+}
