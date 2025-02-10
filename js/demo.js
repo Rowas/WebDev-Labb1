@@ -40,15 +40,15 @@ async function data() {
   return respons.data;
 }
 
-data().then((data) => console.log(data))
+// data().then((data) => JSON.parse(data))
 
-const stickyfoot = `
+const stickyfoot = (`
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-        <span class="text-muted">Test Text</span>
+        <span class="text-muted">${data().then((data) => data.document)}</span>
     </div>
 </footer>
-`
+`)
 
 
 
