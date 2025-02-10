@@ -1,6 +1,5 @@
 // document.addEventListener("DOMContentLoaded", () => {
-
-    const navigation = `
+const navigation = `
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Fina Blommor</a>
@@ -31,13 +30,26 @@
 </nav>
 `
 
+axios.get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.70382156832511&lon=11.962716726049132")
+.then (response => console.log(response.data))
+
+
+async function data() {
+  const url = "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.70382156832511&lon=11.962716726049132"
+  const respons = await axios.get(url)
+  return respons.data;
+}
+
+data().then((data) => console.log(data))
+
 const stickyfoot = `
 <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
+        <span class="text-muted">Test Text</span>
     </div>
 </footer>
 `
+
 
 
 document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
