@@ -1,4 +1,3 @@
-// document.addEventListener("DOMContentLoaded", () => {
 const navigation = `
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">
   <div class="container-fluid">
@@ -30,28 +29,29 @@ const navigation = `
 </nav>
 `
 
-axios.get("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.70382156832511&lon=11.962716726049132")
-.then (response => console.log(response.data))
+const APIURL = "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.70382156832511&lon=11.962716726049132"
 
+fetch(APIURL)
+.then((response) => response.json())
+.then((tempData) => {
+  return tempData
+})
+.then((dataResult) => {
+  stickyfooter(dataResult.properties.timeseries[1].data.instant.details.air_temperature)
+})
 
-async function data() {
-  const url = "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=57.70382156832511&lon=11.962716726049132"
-  const respons = await axios.get(url)
-  return respons.data;
-}
-
-// data().then((data) => JSON.parse(data))
-
-const stickyfoot = (`
-<footer class="footer mt-auto py-3 bg-light">
+function stickyfooter(apiresult) {
+  let footLoc = document.getElementById("stickyfoot")
+  let stickyfoot = (`<footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-        <span class="text-muted">${data().then((data) => data.document)}</span>
+        <span class="text-muted">Current Temperature at location: ${apiresult} C</span>
     </div>
 </footer>
 `)
 
+footLoc.insertAdjacentHTML('afterbegin', stickyfoot)
+}
+
 
 
 document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
-document.getElementById("stickyfoot").insertAdjacentHTML('afterbegin', stickyfoot);
-// })
