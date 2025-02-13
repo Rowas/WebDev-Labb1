@@ -42,7 +42,7 @@ fetch(APIURL)
 
 function stickyfooter(apiresult) {
   let footLoc = document.getElementById("stickyfoot")
-  let stickyfoot = (`<footer class="footer mt-auto py-3 bg-light">
+  let stickyfoot = (`<footer class="footer mt-auto py-3 bg-light" style="background-color: #f0ead6;">
     <div class="container">
         <span class="text-muted">Current Temperature at location: ${apiresult} C</span>
     </div>

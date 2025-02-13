@@ -3,9 +3,11 @@
     flex-direction: column;
 }
 .maploc{
-    align-self: center;
+    align-self:center;
     position:absolute;
-    bottom:0;
+    bottom: 55px;
+    height: 450px;
+    width: 600px;
 }
 .threexgrid{
     display:grid;
