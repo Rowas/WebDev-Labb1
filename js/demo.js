@@ -40,18 +40,20 @@ fetch(APIURL)
   stickyfooter(dataResult.properties.timeseries[1].data.instant.details.air_temperature)
 })
 
+document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
+
 function stickyfooter(apiresult) {
   let footLoc = document.getElementById("stickyfoot")
-  let stickyfoot = (`<footer class="footer mt-auto py-3 bg-light" style="background-color: #f0ead6;">
-    <div class="container">
+  let stickyfoot = (`
+    <div class="container" style="background-color: #f0ead6;">
         <span class="text-muted">Current Temperature at location: ${apiresult} C</span>
     </div>
-</footer>
-`)
+    `)
+    
+
+    
 
 footLoc.insertAdjacentHTML('afterbegin', stickyfoot)
 }
 
 
-
-document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
