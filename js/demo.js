@@ -49,11 +49,20 @@ function stickyfooter(apiresult) {
         <span class="text-muted">Current Temperature at location: ${apiresult} C</span>
     </div>
     `)
-    
-
-    
-
 footLoc.insertAdjacentHTML('afterbegin', stickyfoot)
 }
 
+var modalButtons = document.querySelectorAll("button")
 
+modalButtons.forEach((item) => {
+  item.addEventListener("click", () => {
+    var elem = item;
+    var txt = elem.textContent || elem.innerText;
+    if (txt == "Close" || txt == "Add to cart (not implemented)") {}
+    else
+    {
+      let modalCode = document.getElementById("exampleModalLabel")
+      modalCode.textContent = txt;
+    }
+  })
+})
