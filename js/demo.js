@@ -52,6 +52,61 @@ function stickyfooter(apiresult) {
 footLoc.insertAdjacentHTML('afterbegin', stickyfoot)
 }
 
+if (document.title == "Produkter")
+{
+let prodImg = "prod1.webp";
+let prodName = "prod1";
+
+let productArray = [15]
+let rowNum = 0;
+
+for (let i = 0; i < 15; ++i)
+{
+  let imgNum = Math.random();
+if (imgNum > 0.75)
+{
+  prodImg = "prod4.webp"
+  prodName = "prod4"
+}
+else if (imgNum < 0.75 && imgNum > 0.5)
+{
+  prodImg = "prod3.webp"
+  prodName = "prod3"
+}
+else if (imgNum < 0.5 && imgNum > 0.25)
+{
+  prodImg = "prod2.webp"
+  prodName = "prod2"
+}
+else
+{
+}
+
+let productLayout = 
+`
+<div class="col"><img alt="${prodName}" src="./media/${prodImg}" height="307.23" width="245.85"></img><br>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color:burlywood; color:black" >${prodName}</button></div>
+`
+
+productArray[i] = productLayout
+}
+
+for (let i = 0; i < productArray.length / 4; ++i)
+{
+  let extraRow = 
+`
+<div class="row" id=Row${rowNum}>
+`
+  document.getElementById("productDiv").insertAdjacentHTML("beforeend", extraRow)
+  for (let y = 0; y < 4; ++y)
+  {
+    document.getElementById('Row' + rowNum).insertAdjacentHTML("beforeend", productArray[i + y])
+  }
+  document.getElementById("productDiv").insertAdjacentHTML("beforeend","</div><br>")
+  rowNum = rowNum + 1;
+}
+}
+
 var modalButtons = document.querySelectorAll("button")
 
 modalButtons.forEach((item) => {
