@@ -211,13 +211,13 @@ const navigation = `
       </ul>
       <ul class="navbar-nav me-right mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-          <a id="cartDropList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a id="cartDropList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Varor i kundkorgen: ${cartSize}
           </a>
           <ul id="navItemsCart" class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="./cart.html">Gå till kassan</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li class="dropdown-item"><u>Varor i kundkorgen<u></li>
+            <li class="dropdown-item"><u>Varor i kundkorgen</u></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
