@@ -152,15 +152,15 @@ let cartItem =
                                   <p class="lead fw-normal mb-2">${prod4.prodName}</p>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                  <button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                     <i class="fas fa-minus"></i>
                                   </button>
                   
-                                  <input id="quantity" min="0" name="quantity" value="1" type="number"
+                                  <input aria-label="quantity" id="quantity" min="0" name="quantity" value="1" type="number"
                                     class="form-control form-control-sm" />
                   
-                                  <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                  <button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                     <i class="fas fa-plus"></i>
                                   </button>
@@ -169,7 +169,7 @@ let cartItem =
                                   <h5 class="mb-0">${prod4.prodPrice} SEK</h5>
                                 </div>
                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                  <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                  <a aria-label="remove item" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
                                 </div>
                               </div>
                             </div>
