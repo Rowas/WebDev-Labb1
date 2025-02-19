@@ -145,7 +145,7 @@ let cartItem =
                               <div class="row d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                   <img
-                                    src="./media/${prod4.prodImg}"
+                                    src="./media/${prod4.prodImg}" height="158" width="126"
                                     class="img-fluid rounded-3" alt="${prod4.prodName}">
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
