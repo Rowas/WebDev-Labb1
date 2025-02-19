@@ -79,7 +79,7 @@ modalButtons.forEach((item) => {
   item.addEventListener("click", () => {
     var elem = item;
     var txt = elem.textContent || elem.innerText;
-    if (document.title !== "Produkter" || txt == "Close" || txt == "Add to cart (implementing)") {}
+    if (document.title !== "Produkter" || txt == "Close" || txt == "Add to cart") {}
     else
     {
       let modalCode = document.getElementById("productModal")
