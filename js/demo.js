@@ -113,7 +113,7 @@ modalButtons.forEach((item) => {
   item.addEventListener("click", () => {
     var elem = item;
     var txt = elem.textContent || elem.innerText;
-    if (txt == "Close" || txt == "Add to cart (not implemented)") {}
+    if (document.title !== "Produkter") {}
     else
     {
       let modalCode = document.getElementById("exampleModalLabel")
@@ -132,6 +132,10 @@ payButton.addEventListener("click", () => {
   alert("Not Impemented.")
 })
 
+// var removeButton = document.getElementById("removeButton");
+// removeButton.addEventListener("click", () => {
+//   alert("Not Impemented.")
+// })
 
 let cartItem = 
 `
