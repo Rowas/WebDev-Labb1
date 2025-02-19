@@ -22,6 +22,64 @@ let prod4 = {
   prodPrice : 92
 }
 
+if (document.title == "Cart")
+  {
+  
+  var discountButton = document.getElementById("discountButton");
+  discountButton.addEventListener("click", () => {
+    alert("Not Impemented.")
+  })
+  
+  var payButton = document.getElementById("payButton");
+  payButton.addEventListener("click", () => {
+    alert("Not Impemented.")
+  })
+  
+  let cartItem = 
+  `
+                            <div class="card rounded-3 mb-4">
+                              <div class="card-body p-4">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                  <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <img
+                                      src="./media/${prod4.prodImg}" height="158" width="126"
+                                      class="img-fluid rounded-3" alt="${prod4.prodName}">
+                                  </div>
+                                  <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <p class="lead fw-normal mb-2">${prod4.prodName}</p>
+                                  </div>
+                                  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                    <button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                      <i class="fas fa-minus"></i>
+                                    </button>
+                    
+                                    <input aria-label="quantity" id="quantity" min="0" name="quantity" value="1" type="number"
+                                      class="form-control form-control-sm" />
+                    
+                                    <button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                      <i class="fas fa-plus"></i>
+                                    </button>
+                                  </div>
+                                  <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <h5 class="mb-0">${prod4.prodPrice} SEK</h5>
+                                  </div>
+                                  <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <a aria-label="remove item" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  `
+  
+  let cartItemArray = []
+  
+  cartItemArray.push(cartItem);
+  
+  document.getElementById("cartItems").insertAdjacentHTML("afterbegin", cartItemArray)
+  }
+
 if (document.title == "Produkter")
 {
 
@@ -71,7 +129,7 @@ if (i == 3 || i == 7 || i == 11 || i === 15)
   document.getElementById("productDiv").insertAdjacentHTML("beforeend","</div><br>")
   rowNum = rowNum + 1;
 }  
-}}
+}
 
 var modalButtons = document.querySelectorAll("button")
 
@@ -87,6 +145,7 @@ modalButtons.forEach((item) => {
     }
   })
 })
+}
 
 let cartArray = [];
 var cartSize = 0;
@@ -123,64 +182,6 @@ AddCartBtn.addEventListener("click", () => {
     document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod4.prodName + " | " + prod4.prodPrice + " SEK" + " </li>"
   }
 })
-}
-
-if (document.title == "Cart")
-{
-
-var discountButton = document.getElementById("discountButton");
-discountButton.addEventListener("click", () => {
-  alert("Not Impemented.")
-})
-
-var payButton = document.getElementById("payButton");
-payButton.addEventListener("click", () => {
-  alert("Not Impemented.")
-})
-
-let cartItem = 
-`
-                          <div class="card rounded-3 mb-4">
-                            <div class="card-body p-4">
-                              <div class="row d-flex justify-content-between align-items-center">
-                                <div class="col-md-2 col-lg-2 col-xl-2">
-                                  <img
-                                    src="./media/${prod4.prodImg}" height="158" width="126"
-                                    class="img-fluid rounded-3" alt="${prod4.prodName}">
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-xl-3">
-                                  <p class="lead fw-normal mb-2">${prod4.prodName}</p>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                  <button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                    <i class="fas fa-minus"></i>
-                                  </button>
-                  
-                                  <input aria-label="quantity" id="quantity" min="0" name="quantity" value="1" type="number"
-                                    class="form-control form-control-sm" />
-                  
-                                  <button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                    <i class="fas fa-plus"></i>
-                                  </button>
-                                </div>
-                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                  <h5 class="mb-0">${prod4.prodPrice} SEK</h5>
-                                </div>
-                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                  <a aria-label="remove item" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-`
-
-let cartItemArray = []
-
-cartItemArray.push(cartItem);
-
-document.getElementById("cartItems").insertAdjacentHTML("afterbegin", cartItemArray)
 }
 
 const navigation = `
