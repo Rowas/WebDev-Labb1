@@ -99,24 +99,28 @@ AddCartBtn.addEventListener("click", () => {
     cartArray[cartSize] = prod1;
     ++cartSize;
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod1.prodName + " | " + prod1.prodPrice + " SEK" + " </li>"
   }
   else if (document.getElementById("productModal").textContent == prod2.prodName)
   {
     cartArray[cartSize] = prod2;
     ++cartSize;
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod2.prodName + " | " + prod2.prodPrice + " SEK" + " </li>"
   }
   else if (document.getElementById("productModal").textContent == prod3.prodName)
   {
     cartArray[cartSize] = prod3;
     ++cartSize;
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod3.prodName + " | " + prod3.prodPrice + " SEK" + " </li>"
   }
   else
   {
     cartArray[cartSize] = prod4;
     ++cartSize;
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod4.prodName + " | " + prod4.prodPrice + " SEK" + " </li>"
   }
 })
 }
@@ -197,8 +201,8 @@ const navigation = `
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="./products.html">Produkter</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="./services.html">Tjänster</a></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <!-- <li><a class="dropdown-item" href="./services.html">Tjänster</a></li> -->
           </ul>
         </li>
         <li class="nav-item">
@@ -210,8 +214,11 @@ const navigation = `
           <a id="cartDropList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Varor i kundkorgen: ${cartSize}
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="./cart.html">Kassan</a></li>
+          <ul id="navItemsCart" class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="./cart.html">Gå till kassan</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-item"><u>Varor i kundkorgen<u></li>
+            <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
         </ul>
