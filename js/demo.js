@@ -1,4 +1,6 @@
-  let productArray = []
+if (document.title == "Produkter" || document.title == "Cart")
+{
+let productArray = []
   let rowNum = 0;
 
 let prod1 = {
@@ -183,7 +185,7 @@ AddCartBtn.addEventListener("click", () => {
   }
 })
 }
-
+}
 const navigation = `
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">
   <div class="container-fluid">
