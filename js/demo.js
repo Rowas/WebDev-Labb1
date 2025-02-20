@@ -36,50 +36,6 @@ if (document.title == "Cart")
   payButton.addEventListener("click", () => {
     alert("Not Impemented.")
   })
-  
-  // let cartItem = 
-  // `
-  //                           <div class="card mb-4">
-  //                             <div class="card-body p-4">
-  //                               <div class="row d-flex justify-content-between align-items-center">
-  //                                 <div class="col-md-2 col-lg-2 col-xl-2">
-  //                                   <img fetchpriority="high"
-  //                                     src="./media/${prod4.prodImg}" height="158" width="126"
-  //                                     class="img-fluid" alt="${prod4.prodName}">
-  //                                 </div>
-  //                                 <div class="col-md-3 col-lg-3 col-xl-3">
-  //                                   <p class="lead fw-normal mb-2">${prod4.prodName}</p>
-  //                                 </div>
-  //                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-  //                                   <button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-  //                                     onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-  //                                     <i class="fas fa-minus"></i>
-  //                                   </button>
-                    
-  //                                   <input aria-label="quantity" id="quantity" min="0" name="quantity" value="1" type="number"
-  //                                     class="form-control form-control-sm" />
-                    
-  //                                   <button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-  //                                     onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-  //                                     <i class="fas fa-plus"></i>
-  //                                   </button>
-  //                                 </div>
-  //                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-  //                                   <h5 class="mb-0">${prod4.prodPrice} SEK</h5>
-  //                                 </div>
-  //                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-  //                                   <a aria-label="remove item" href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-  //                                 </div>
-  //                               </div>
-  //                             </div>
-  //                           </div>
-  // `
-  
-  // let cartItemArray = []
-  
-  // cartItemArray.push(cartItem);
-  
-  // document.getElementById("cartItems").insertAdjacentHTML("afterbegin", cartItemArray)
   }
 
 if (document.title == "Produkter")
@@ -159,32 +115,39 @@ AddCartBtn.addEventListener("click", () => {
   {
     cartArray[cartSize] = prod1;
     ++cartSize;
-    document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod1.prodName + " | " + prod1.prodPrice + " SEK" + " </li>"
+    UpdateCart(prod1, cartSize);
   }
   else if (document.getElementById("productModal").textContent == prod2.prodName)
   {
     cartArray[cartSize] = prod2;
     ++cartSize;
-    document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod2.prodName + " | " + prod2.prodPrice + " SEK" + " </li>"
+    UpdateCart(prod2, cartSize);
   }
   else if (document.getElementById("productModal").textContent == prod3.prodName)
   {
     cartArray[cartSize] = prod3;
     ++cartSize;
-    document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod3.prodName + " | " + prod3.prodPrice + " SEK" + " </li>"
+    UpdateCart(prod3, cartSize);
   }
   else
   {
     cartArray[cartSize] = prod4;
     ++cartSize;
-    document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-    document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + cartSize + ". " + prod4.prodName + " | " + prod4.prodPrice + " SEK" + " </li>"
+    UpdateCart(prod4, cartSize);
   }
 })
 }
+
+function UpdateCart(product, cartSize) {
+  document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+  document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + " </li>"
+}
+
+}
+
+if (document.title !== "Produkter" || document.title !== "Cart")
+{
+  cartSize = 0
 }
 
 const navigation = `
@@ -205,8 +168,6 @@ const navigation = `
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="./products.html">Produkter</a></li>
-            <!-- <li><hr class="dropdown-divider"></li> -->
-            <!-- <li><a class="dropdown-item" href="./services.html">Tjänster</a></li> -->
           </ul>
         </li>
         <li class="nav-item">
