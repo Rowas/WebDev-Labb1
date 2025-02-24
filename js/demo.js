@@ -6,22 +6,26 @@ let productArray = []
 let prod1 = {
   prodImg : "prod1.webp",
   prodName : "Blomma",
-  prodPrice : 21
+  prodPrice : 21,
+  inCart : 0
 }
 let prod2 = {
   prodImg : "prod2.webp",
   prodName : "Blommor",
-  prodPrice : 44
+  prodPrice : 44,
+  inCart : 0
 }
 let prod3 = {
   prodImg : "prod3.webp",
   prodName : "Liten Bukett",
-  prodPrice : 64
+  prodPrice : 64,
+  inCart : 0
 }
 let prod4 = {
   prodImg : "prod4.webp",
   prodName : "Stor Bukett",
-  prodPrice : 92
+  prodPrice : 92,
+  inCart : 0
 }
 
 if (document.title == "Cart")
@@ -138,9 +142,35 @@ AddCartBtn.addEventListener("click", () => {
 })
 }
 
+const MoreItems = `
+<button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+  <i class="fas fa-plus"></i>
+</button>
+`
+
+const LessItems = `
+<button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+  <i class="fas fa-minus"></i>
+</button>
+`
+
 function UpdateCart(product, cartSize) {
+  let itemCheck = document.getElementById(product.prodName)
+  if (itemCheck === null)
+  {
+    product.inCart = 1;
   document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-  document.getElementById("navItemsCart").innerHTML += `<li class="dropdown-item"> ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + " </li>"
+  document.getElementById("navItemsCart").innerHTML += `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10"/>` + MoreItems + " </li>"
+  }
+  else
+  {
+    product.inCart += 1;
+    console.log(product.inCart);
+    document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
+    document.getElementById(product.prodName).innerHTML = `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10" />` + MoreItems + " </li>"
+  }
 }
 
 }
@@ -151,12 +181,23 @@ if (document.title !== "Produkter" || document.title !== "Cart")
 }
 
 const navigation = `
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f0ead6;">  
+<div class="container-fluid">
     <a class="navbar-brand" href="./">Fina Blommor</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+ <div class="order-lg-last flex-grow-1 flex-lg-grow-0 text-end" style="padding-right:10px;">
+  <button class="btn btn-outline-dark ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser" aria-controls="offcanvasUser">
+  <ul class="navbar-nav me-right mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+            <a id="cartDropList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Varor i kundkorgen: ${cartSize}
+          </a>
+        </li>
+        </ul>
+  </button>
+</div>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -174,22 +215,24 @@ const navigation = `
           <a class="nav-link" href="./about.html">Om oss</a>
         </li>
       </ul>
-      <ul class="navbar-nav me-right mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-            <a id="cartDropList" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Varor i kundkorgen: ${cartSize}
-          </a>
-          <ul id="navItemsCart" class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="./cart.html">Gå till kassan</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="dropdown-item"><u>Varor i kundkorgen</u></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-        </li>
-        </ul>
     </div>
   </div>
 </nav>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasUser" aria-labelledby="offcanvasUserLabel">
+  <div class="offcanvas-header text-black " style="background-color: #f0ead6;">
+      <h5 class="offcanvas-title" id="offcanvasUserLabel">Varukorg</h5>
+      <button type="button" class="btn-close btn-close-black text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" style="background-color: #f0ead6; ">
+      <p style="border-top: 1px solid black;"></p>
+      <ul id="navItemsCart" class="list-group" aria-labelledby="navbarDropdown">
+          <li class="list-group-item"><a href="#">Gå till kassan</a></li>
+          <li class="list-group-item"></li>
+          <li class="list-group-item"><u>Varor i kundkorgen</u></li>
+      </ul>
+  </div>
+</div>
 `
 document.getElementById("nav-container").insertAdjacentHTML('afterbegin', navigation);
 
@@ -209,7 +252,7 @@ function stickyfooter(apiresult) {
   let footLoc = document.getElementById("stickyfoot")
   let stickyfoot = (`
     <div class="container" style="background-color: #f0ead6;">
-        <span class="text-muted">Current Temperature at location: ${apiresult} C</span>
+        <span class="text-muted">Temperatur ute vid butiken: ${apiresult} C</span>
     </div>
     `)
 footLoc.insertAdjacentHTML('afterbegin', stickyfoot)
