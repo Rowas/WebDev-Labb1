@@ -176,7 +176,7 @@ function UpdateCart(product, cartSize) {
   {
     product.inCart += 1;
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-    document.getElementById(product.prodName).innerHTML = `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10" />` + MoreItems + " </li>"
+    document.getElementById(product.prodName).innerHTML = `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10" />` + MoreItems + " " + removeItem + " </li>"
   }
 }
 
