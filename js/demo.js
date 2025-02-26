@@ -142,32 +142,39 @@ AddCartBtn.addEventListener("click", () => {
 })
 }
 
-const MoreItems = `
+let MoreItems = `
 <button aria-label="More Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
   onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
   <i class="fas fa-plus"></i>
 </button>
 `
 
-const LessItems = `
+let LessItems = `
 <button aria-label="Less Items" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
   onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
   <i class="fas fa-minus"></i>
 </button>
 `
 
+let removeItem = `
+<button aria-label="Remove Item" data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+  onclick="this.parentNode.remove()">
+  <i class="fas fa-xmark"></i>
+</button>
+`
+
 function UpdateCart(product, cartSize) {
   let itemCheck = document.getElementById(product.prodName)
+
   if (itemCheck === null)
   {
     product.inCart = 1;
   document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
-  document.getElementById("navItemsCart").innerHTML += `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10"/>` + MoreItems + " </li>"
+  document.getElementById("navItemsCart").innerHTML += `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10"/>` + MoreItems + " " + removeItem + " </li>"
   }
   else
   {
     product.inCart += 1;
-    console.log(product.inCart);
     document.getElementById("cartDropList").textContent = `Varor i kundkorgen: ${cartSize}`;
     document.getElementById(product.prodName).innerHTML = `<li class="list-group-item" id="${product.prodName}" > ` + `<img src="./media/${product.prodImg}" height="30px" width="20">` + ". " + product.prodName + " | " + product.prodPrice + " SEK" + `<br>` + LessItems + `<input class="number" aria-label="quantity" id="quantity" min="0" name="quantity" value="${product.inCart}" type="number" disabled="true" size="10" />` + MoreItems + " </li>"
   }
